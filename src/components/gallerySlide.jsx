@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/virtual";
 
 export default () => {
-  const { encuestas } = [{"id":"1","name":"encuesta1"},{"id":"2","name":"encuesta2"}];
+  const { encuestas } = useContext(Context);
 
   return (
     <Swiper modules={[Virtual]} spaceBetween={20} slidesPerView={2} virtual>

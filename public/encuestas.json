@@ -1,11 +1,11 @@
 [
     {
-      "name": "Encuesta1",
-      "id": "1"
+      "id": "1",
+      "name":"encuesta1"
     },
     {
-      "name": "Encuesta2",
-      "index": "2"
+      "id": "2",
+      "name": "Encuesta2"
     },
     {
       "id": "3",
