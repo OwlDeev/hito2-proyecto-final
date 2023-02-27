@@ -1,0 +1,47 @@
+.background {
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appLogo {
+  width: 15%;
+  height: 20%;
+}
+
+.divider {
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.divRegistrate {
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelTitulo1 {
+  color: black !important;
+}
+
+.botonRegistrarse {
+  width: 100px;
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+}
+
+.divBotones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
