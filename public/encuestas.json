@@ -1,26 +1,32 @@
 [
     {
       "id": "1",
-      "name":"encuesta1"
+      "name":"encuesta1",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     },
     {
       "id": "2",
-      "name": "Encuesta2"
+      "name": "Encuesta2",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     },
     {
       "id": "3",
-      "name": "Encuesta3"
+      "name": "Encuesta3",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     },
     {
       "id": "4",
-      "name": "Encuesta4"
+      "name": "Encuesta4",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     },
     {
       "id": "5",
-      "name": "Encuesta5"
+      "name": "Encuesta5",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     },
     {
       "id": "6",
-      "name": "Encuesta6"
+      "name": "Encuesta6",
+      "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Fencuesta&psig=AOvVaw1OVhq9k56MKVX4At_cosA-&ust=1677563573173000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjH0byBtf0CFQAAAAAdAAAAABAD"
     }
   ]
