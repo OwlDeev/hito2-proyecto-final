@@ -7,6 +7,7 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 function homeUsuario() {
   return (
@@ -17,12 +18,16 @@ function homeUsuario() {
             ¿Que deseas hacer?
           </Typography>
           <Box className="divEvaluaciones">
-            <Button variant="contained" className="botonEvaluaciones">
-              Capacitacion DNC
-            </Button>
-            <Button variant="contained" className="botonEvaluaciones">
-              Evaluaciones
-            </Button>
+            <NavLink to={"/previewEncuesta"}>
+              <Button variant="contained" className="botonEvaluaciones">
+                Capacitacion DNC
+              </Button>
+            </NavLink>
+            <NavLink to={"/evaluaciones"}>
+              <Button variant="contained" className="botonEvaluaciones">
+                Evaluaciones
+              </Button>
+            </NavLink>
           </Box>
         </Box>
       </Container>

@@ -13,13 +13,17 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../img/logo.png";
+import { NavLink } from "react-router-dom";
 
 const pages = [
   { label: "Iniciar Sesion", url: "/Login" },
-  { label: "Registrarse", url: "/Registrarse" },
+  { label: "Registrate", url: "/Registrate" },
   { label: "Home Usuario", url: "/homeUsuario" },
 ];
-const settings = ["Perfil", "Cerrar Sesion"];
+const settings = [
+  { label: "Perfil", url: "/perfilUsuario" },
+  { label: "Cerrar Sesion", url: "/login" },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -33,7 +37,6 @@ function ResponsiveAppBar() {
   };
 
   const handleCloseNavMenu = () => {
-    console.log("funciona");
     setAnchorElNav(null);
   };
 
@@ -102,13 +105,14 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page.label}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page.label}
-              </Button>
+              <NavLink to={page.url}>
+                <Button
+                  key={page.label}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page.label}
+                </Button>
+              </NavLink>
             ))}
           </Box>
 
@@ -118,7 +122,10 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"></Avatar>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                ></Avatar>
                 Usuario
               </IconButton>
             </Tooltip>
@@ -139,9 +146,11 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <NavLink to={setting.url}>
+                  <MenuItem key={setting.label} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.label}</Typography>
+                  </MenuItem>
+                </NavLink>
               ))}
             </Menu>
           </Box>

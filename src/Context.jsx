@@ -7,24 +7,17 @@ export const Provider = ({ children }) => {
   //UseEffect
   useEffect(() => {
     // Make a request for a user with a given ID
-    // async function getUser() {
-    //   let url = 'https://owldeev.github.io/pizza-mamma-mia/pizzas.json';
-    //   let reqOptions = {
-    //     url: url,
-    //     method: "GET",
-    //   };
+     async function getUser() {
 
-    //   let response = await axios.request(reqOptions);
-    //   setPizza(response.data);
-    // }
+     }
 
     // getUser();
   }, []);
 
   //UseState
-   const [pizzas, setPizza] = useState([]);
-   const [carrito, setCarrito] = useState([]);
-   const globalState = { pizzas, setPizza, carrito, setCarrito};
+   const [encuestas, setEncuestas] = useState([]);
+   const [usuario, setUsuario] = useState([]);
+   const globalState = { encuestas, setEncuestas, usuario, setUsuario};
 
   return <Context.Provider value={globalState}>{children}</Context.Provider>;
 };
