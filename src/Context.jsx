@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
-import data from './data/encuestas.json'
 
 export const Context = createContext();
 
@@ -9,7 +8,7 @@ export const Provider = ({ children }) => {
   useEffect(() => {
     // Make a request for a user with a given ID
     async function getUser() {
-      let url = data;
+      let url = "https://owldeev.github.io/hito2-proyecto-final/encuestas.json";
       let reqOptions = {
         url: url,
         method: "GET",
