@@ -1,1 +1,3 @@
-# Creacion de plataforma web de encuesta de skills para empresas
+# Plataforma web de encuesta de skills para empresas
+
+FRONT DE LA APP
