@@ -16,6 +16,13 @@ import { useNavigate } from "react-router-dom";
 
 function Encuesta() {
 
+  const navigate = useNavigate();
+  const { usuarioCompleto, esDNC, encuestaElegida } = useContext(Context);
+  const [idEncuesta, setIdEncuesta] = useState(0);
+  const [survey, setSurvey] = useState(new Model())
+  const [openDialogActualizar, setOpenDiagolActualizar] = useState(false);
+
+
   useEffect(() => {
     if (esDNC === 1) {
       setIdEncuesta(1);
@@ -86,14 +93,7 @@ function Encuesta() {
 
     let model = new Model(surveyJson)
     setSurvey(model)
-  }, []);
-
-  const navigate = useNavigate();
-  const { usuarioCompleto, esDNC, encuestaElegida } = useContext(Context);
-  const [setIdEncuesta] = useState(0);
-  const [survey, setSurvey] = useState(new Model())
-  const [openDialogActualizar, setOpenDiagolActualizar] = useState(false);
-  
+  }, []);  
 
   const registrarDatos = async (respuestaEnc) => {
     const urlServer = "http://localhost:4000";
