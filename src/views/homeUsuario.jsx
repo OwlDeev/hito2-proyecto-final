@@ -10,6 +10,8 @@ function HomeUsuario() {
   const {
     usuario,
     setUsuarioCompleto,
+    setUsuarioEncuesta,
+    usuarioEncuesta,
     setEsDNC,
   } = useContext(Context);
   const [encuestaDncRealizada, setEncuestaDncRealizada] = useState(false);
@@ -17,6 +19,14 @@ function HomeUsuario() {
   useEffect(() => {
     buscarUsuario();
   }, []);
+
+  // useEffect(() => {
+  //   for(let encuesta of usuarioEncuesta){
+  //     if (encuesta.id_encuesta === 1 && encuesta.realizada === 1) {
+  //       setEncuestaDncRealizada(true);
+  //     }
+  //   }
+  // }, [usuarioEncuesta]);
 
   const buscarUsuario = async () => {
     const urlServer = "http://localhost:4000";
@@ -29,7 +39,9 @@ function HomeUsuario() {
         soloUnaVez = 1;
         let usuarioBd = await axios.post(urlServer + endpoint, emailUsuario);
         setUsuarioCompleto(usuarioBd.data[0]);
-        for(let encuesta of usuarioBd.data[1]){
+        setUsuarioEncuesta(usuarioBd.data[1]);
+        console.log(usuarioEncuesta)
+        for (let encuesta of usuarioBd.data[1]) {
           if (encuesta.id_encuesta === 1 && encuesta.realizada === 1) {
             setEncuestaDncRealizada(true);
           }
