@@ -126,90 +126,14 @@ function Encuesta() {
   };
 
   const onComplete = (survey, options) => {
-    let encuestaDNC = 0
-    const valores = {}
-    if(encuestaElegida = 0){
-      encuestaDNC=1
-      valores = {
+      const valores = {
         idUsuario: usuarioCompleto[0].id,
-        idEncuesta: encuestaDNC,
+        idEncuesta: (encuestaElegida == 0) ? 1: encuestaElegida,
         respuesta: survey.data,
       }
-    }else{
-      valores = {
-        idUsuario: usuarioCompleto[0].id,
-        idEncuesta: encuestaElegida,
-        respuesta: survey.data,
-      }
-    }
     registrarDatos(valores)
   };
 
-  // let encuestaSeleccionada = () =>{
-  //   let surveyJson = {}
-  //   switch (encuestaElegida) {
-  //     case 1:
-  //       surveyJson = {
-  //         elements: [
-  //           {
-  //             name: "actitud",
-  //             title: "Cual es su tu actitud en el campo laboral:",
-  //             type: "rating",
-  //             isRequired: true
-  //           },
-  //           {
-  //             name: "motivación",
-  //             title: "Cual es su tu motivación en el campo laboral:",
-  //             type: "rating",
-  //             isRequired: true
-  //           },
-  //         ],
-  //       };
-  //       break;
-    
-  //       case 2:
-  //         surveyJson = {
-  //           elements: [
-  //             {
-  //               name: "nivel",
-  //               title: "Cual es tu nivel de liderazgo en el campo laboral:",
-  //               type: "rating",
-  //               isRequired: true
-  //             },
-  //             {
-  //               name: "acompañamiento",
-  //               title: "Cual es tu nivel de acompañamiento en el campo laboral:",
-  //               type: "rating",
-  //               isRequired: true
-  //             },
-  //           ],
-  //         };
-  //         break;
-
-  //         case 3:
-  //       surveyJson = {
-  //         elements: [
-  //           {
-  //             name: "nivel",
-  //             title: "Cual es tu nivel de conocimiento de tus sentimientos:",
-  //             type: "rating",
-  //             isRequired: true
-  //           },
-  //           {
-  //             name: "atencion",
-  //             title: "Que nivel prestas atención en tus emociones:",
-  //             type: "rating",
-  //             isRequired: true
-  //           },
-  //         ],
-  //       };
-  //       break;
-  //   }
-    
-  //   let model = new Model(surveyJson)
-  //   setSurvey(model)
-  // }
-  
 
   const handleCloseDialog = () => {
     setOpenDiagolActualizar(false);
