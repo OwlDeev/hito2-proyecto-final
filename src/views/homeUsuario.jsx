@@ -1,28 +1,83 @@
 import "../css/homeUsuario.css";
-import {
-  Container,
-  Box,
-  Button,
-  Divider,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Container, Box, Button, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useEffect, useContext, useState } from "react";
+import { Context } from "../Context";
+import axios from "axios";
 
-function homeUsuario() {
+function HomeUsuario() {
+  let soloUnaVez = 0;
+  const {
+    usuario,
+    setUsuarioCompleto,
+    setUsuarioEncuesta,
+    usuarioEncuesta,
+    setEsDNC,
+  } = useContext(Context);
+  const [encuestaDncRealizada, setEncuestaDncRealizada] = useState(false);
+
+  useEffect(() => {
+    buscarUsuario();
+  }, []);
+
+  useEffect(() => {
+    for(let encuesta of usuarioEncuesta){
+      if (encuesta.id_encuesta == 1 && encuesta.realizada == 1) {
+        setEncuestaDncRealizada(true);
+      }
+    }
+    
+  }, [usuarioEncuesta]);
+
+  const buscarUsuario = async () => {
+    const urlServer = "http://localhost:4000";
+    const endpoint = "/homeUsuario";
+    let emailUsuario = {
+      email: usuario,
+    };
+    try {
+      if (soloUnaVez === 0) {
+        soloUnaVez = 1;
+        let usuarioBd = await axios.post(urlServer + endpoint, emailUsuario);
+        setUsuarioCompleto(usuarioBd.data[0]);
+        setUsuarioEncuesta(usuarioBd.data[1]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function isDNC() {
+    setEsDNC(1);
+  }
+
   return (
     <>
-      <Container fixed className="background">
+      <Container className="background">
         <Box className="divMain">
           <Typography variant="h4" gutterBottom className="labelTitulo1">
             ¿Que deseas hacer?
           </Typography>
           <Box className="divEvaluaciones">
-            <NavLink to={"/previewEncuesta"}>
-              <Button variant="contained" className="botonEvaluaciones">
-                Capacitacion DNC
+            {encuestaDncRealizada ? (
+              <Button
+                variant="contained"
+                className="botonEvaluaciones"
+                disabled={encuestaDncRealizada}
+              >
+                Capacitación DNC
               </Button>
-            </NavLink>
+            ) : (
+              <NavLink to={"/previewEncuesta"} onClick={isDNC}>
+                <Button
+                  variant="contained"
+                  className="botonEvaluaciones"
+                  disabled={encuestaDncRealizada}
+                >
+                  Capacitación DNC
+                </Button>
+              </NavLink>
+            )}
             <NavLink to={"/evaluaciones"}>
               <Button variant="contained" className="botonEvaluaciones">
                 Evaluaciones
@@ -35,4 +90,4 @@ function homeUsuario() {
   );
 }
 
-export default homeUsuario;
+export default HomeUsuario;

@@ -5,27 +5,35 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   //UseEffect
-  useEffect(() => {
-    // Make a request for a user with a given ID
-    async function getUser() {
-      let url = "https://owldeev.github.io/hito2-proyecto-final/encuestas.json";
-      let reqOptions = {
-        url: url,
-        method: "GET",
-      };
-
-      let response = await axios.request(reqOptions);
-      setEncuestas(response.data);
-    }
-
-    getUser();
-
-  }, []);
 
   //UseState
-   const [encuestas, setEncuestas] = useState([]);
-   const [usuario, setUsuario] = useState([]);
-   const globalState = { encuestas, setEncuestas, usuario, setUsuario};
+  const [encuestas, setEncuestas] = useState([]);
+  const [encuestaElegida, setEncuestaElegida] = useState(0)
+  const [usuario, setUsuario] = useState([]);
+  const [allAreas, setAllAreas] = useState([]);
+  const [usuarioCompleto, setUsuarioCompleto] = useState([
+    { area: "", email: "", id: "", imagen: "", nombre: "", password: "" },
+  ]);
+  const [usuarioEncuesta, setUsuarioEncuesta] = useState([
+    { id_usuario: '', id_encuesta: '', realizada: ''},
+  ]);
+  const [esDNC, setEsDNC] = useState(0)
+  const globalState = {
+    encuestas,
+    setEncuestas,
+    usuario,
+    setUsuario,
+    usuarioCompleto,
+    setUsuarioCompleto,
+    setAllAreas,
+    allAreas,
+    setUsuarioEncuesta,
+    usuarioEncuesta,
+    setEsDNC,
+    esDNC,
+    setEncuestaElegida,
+    encuestaElegida,
+  };
 
   return <Context.Provider value={globalState}>{children}</Context.Provider>;
 };

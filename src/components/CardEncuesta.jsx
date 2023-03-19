@@ -5,8 +5,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../Context";
 
-export default function CardEncuesta({ name, img }) {
+
+
+export default function CardEncuesta({ name, img, tituloEncuesta, idEncuesta }) {
+
+  const { setEsDNC, setEncuestaElegida } = useContext(Context);
+
+  let onClickComenzar = () =>{
+    setEsDNC(0)
+    setEncuestaElegida(idEncuesta)
+  }
+
   return (
     <Card className="cardMain">
       <CardMedia component="img" height="140" image={img} />
@@ -21,7 +33,7 @@ export default function CardEncuesta({ name, img }) {
             Mas Info
           </Button>
         </div>
-        <NavLink to={"/previewEncuesta"}>
+        <NavLink to={"/previewEncuesta"} onClick={onClickComenzar}>
           <div className="buttonAction">
             <Button variant="contained" size="large" color="success">
               Comenzar Encuesta

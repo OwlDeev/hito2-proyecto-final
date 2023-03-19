@@ -9,11 +9,19 @@
   align-items: center;
 }
 
-.nombreUsuario {
+.inputEditar{
   margin-top: 30px !important;
   width: 80%;
 }
 
+.iconButton{
+  margin-top: 30px !important;
+}
+
+.iconButtonVacio{
+  margin-top: 30px !important;
+  width: 9%;
+}
 .nombreUsuarioEditar {
   display: flex;
   flex-direction: row;
@@ -41,4 +49,12 @@
     width: 80% !important;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.boxButtonFooter{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

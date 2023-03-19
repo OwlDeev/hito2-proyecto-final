@@ -1,0 +1,17 @@
+.backgroundHome {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://img.freepik.com/foto-gratis/gente-negocios-fondo-azul_53876-101889.jpg?w=900&t=st=1679192062~exp=1679192662~hmac=e37c9c389b15bfa29d1e50f7e9efb364daf579e151735979a1dd8fc2fb9ab217");
+  background-repeat: repeat-y;
+  
+  /* ajustar la posición y el tamaño de la imagen de fondo */
+  background-position: center;
+  background-size: cover;
+}
+
+.image-difuminada {
+  /* agregar el sombreado a la imagen */
+  border-radius: 20px;
+}

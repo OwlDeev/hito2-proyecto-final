@@ -5,15 +5,17 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../img/logo.png";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../Context";
+import "../css/appBar.css";
 
 const pages = [
   { label: "Iniciar Sesion", url: "/Login" },
@@ -26,8 +28,21 @@ const settings = [
 ];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
+  const { usuario, setUsuario, usuarioCompleto } = useContext(Context);
+
+  useEffect(() => {
+    handleCloseNavMenu()
+    handleCloseUserMenu()
+  }, []);
+
+  const logout = () => {
+    setUsuario(null);
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -44,6 +59,169 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const abrirPerfil = () => {
+    setAnchorElUser(null);
+    navigate("/perfilUsuario");
+  };
+
+  let menuItemUsuarioPriv = () => {
+    return (
+      <div>
+        <MenuItem key={pages[2].label} onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">{pages[2].label}</Typography>
+        </MenuItem>
+      </div>
+    );
+  };
+
+  let menuItemUsuarioPub = () => {
+    return (
+      <div>
+        <MenuItem key={pages[0].label} onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">{pages[0].label}</Typography>
+        </MenuItem>
+
+        <MenuItem key={pages[1].label} onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">{pages[1].label}</Typography>
+        </MenuItem>
+      </div>
+    );
+  };
+
+  function privateMenuItem(usuario) {
+    if (
+      usuario !== null &&
+      (usuario.email !== undefined || usuario.email !== "")
+    ) {
+      return (
+        <div className="menuItem">
+          <NavLink to={pages[2].url}>
+            <Button
+              key={pages[2].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[2].label}
+            </Button>
+          </NavLink>
+        </div>
+      );
+    } else {
+      return (
+        <div className="menuItem">
+          <NavLink to={pages[0].url}>
+            <Button
+              key={pages[0].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[0].label}
+            </Button>
+          </NavLink>
+
+          <NavLink to={pages[1].url}>
+            <Button
+              key={pages[1].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[1].label}
+            </Button>
+          </NavLink>
+        </div>
+      );
+    }
+  }
+
+  function publicMenuItem(usuario) {
+    if (
+      usuario !== undefined &&
+      (usuario.email !== undefined || usuario.email !== "")
+    ) {
+      return (
+        <div className="menuItem">
+          <NavLink to={pages[0].url}>
+            <Button
+              key={pages[0].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[0].label}
+            </Button>
+          </NavLink>
+
+          <NavLink to={pages[1].url}>
+            <Button
+              key={pages[1].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[1].label}
+            </Button>
+          </NavLink>
+        </div>
+      );
+    } else {
+      return (
+        <div className="menuItem">
+          <NavLink to={pages[2].url}>
+            <Button
+              key={pages[2].label}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[2].label}
+            </Button>
+          </NavLink>
+        </div>
+      );
+    }
+  }
+
+  function publicItemPerfil(usuario) {
+    if (
+      usuario !== null && (usuario !== undefined &&
+        (usuario.email !== undefined || usuario.email !== ""))
+    ) {
+      return (
+        <div>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar
+                alt="Remy Sharp"
+                src={usuarioCompleto[0].imagen}
+              ></Avatar>
+              {usuarioCompleto[0].nombre}
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            <NavLink to={settings[0].url}>
+              <MenuItem key={settings[0].label} onClick={abrirPerfil}>
+                <Typography textAlign="center">{settings[0].label}</Typography>
+              </MenuItem>
+            </NavLink>
+            <NavLink to={settings[1].url}>
+              <MenuItem key={settings[1].label} onClick={logout}>
+                <Typography textAlign="center">{settings[1].label}</Typography>
+              </MenuItem>
+            </NavLink>
+          </Menu>
+        </div>
+      );
+    } else {
+      <div></div>;
+    }
+  }
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -56,9 +234,7 @@ function ResponsiveAppBar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            ></IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -77,82 +253,24 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.label}</Typography>
-                </MenuItem>
-              ))}
+              {!usuario ? menuItemUsuarioPriv : menuItemUsuarioPub}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <NavLink to={page.url}>
-                <Button
-                  key={page.label}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page.label}
-                </Button>
-              </NavLink>
-            ))}
+            {!usuario || usuario.length !== 0
+              ? privateMenuItem(usuario)
+              : publicMenuItem(usuario)}
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <img src={logo} className="appLogo" alt="logo" />
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
-                ></Avatar>
-                Usuario
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <NavLink to={setting.url}>
-                  <MenuItem key={setting.label} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting.label}</Typography>
-                  </MenuItem>
-                </NavLink>
-              ))}
-            </Menu>
+            {!usuario || usuario.length !== 0 ? (
+              publicItemPerfil(usuario)
+            ) : (
+              <div></div>
+            )}
           </Box>
         </Toolbar>
       </Container>

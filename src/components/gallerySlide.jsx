@@ -4,25 +4,54 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useContext } from "react";
 import { Context } from "../Context";
 import CardEncuesta from "./CardEncuesta";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/virtual";
 
 export default () => {
-  const { encuestas } = useContext(Context);
+  useEffect(() => {
+    obtenerEvaluaciones();
+  }, []);
+
+  const { encuestas, usuarioEncuesta, setEncuestas } = useContext(Context);
+
+  const obtenerEvaluaciones = async () => {
+    const urlServer = "http://localhost:4000";
+    const endpoint = "/evaluaciones";
+    let usuario = {
+      idUsuario: usuarioEncuesta[0].id_usuario,
+    };
+    try {
+      let resultado = await axios.post(urlServer + endpoint, usuario);
+      setEncuestas(resultado.data);
+    } catch ({ response: { data: message } }) {}
+  };
+
 
   return (
-    <Swiper modules={[Virtual]} spaceBetween={20} slidesPerView={4} virtual>
-      {encuestas.map((encuesta, index) => (
-        <SwiperSlide key={encuesta.id} virtualIndex={index}>
-          {
-            <CardEncuesta key={encuesta.id} name={encuesta.name} img={encuesta.img}>
-              encuesta.id
-            </CardEncuesta>
-          }
-        </SwiperSlide>
-      ))}
+    <Swiper modules={[Virtual]} spaceBetween={20} slidesPerView={2} virtual>
+      {encuestas.map((encuesta, index) =>
+        encuesta.titulo == "DNC" ? (
+          <div></div>
+        ) : (
+          <SwiperSlide key={encuesta.id_encuesta} virtualIndex={index}>
+            {
+              <CardEncuesta
+                key={encuesta.id}
+                name={encuesta.titulo}
+                img={"https://www.caf.com/media/3381584/encuesta.png"}
+                tituloEncuesta={encuesta.titulo}
+                idEncuesta={encuesta.id}
+              >
+                {encuesta.id_encuesta}
+              </CardEncuesta>
+            }
+          </SwiperSlide>
+        )
+      )}
     </Swiper>
   );
 };

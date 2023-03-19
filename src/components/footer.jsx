@@ -1,5 +1,4 @@
 import "../css/footer.css";
-import logo from "../img/logo.png";
 import {
   Typography,
 } from "@mui/material";
@@ -9,7 +8,7 @@ function Footer() {
     <>
       <footer className="footer">
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} p={1}>
-          <center>© 2016-2022 Developer OwlDev. All rights reserved.</center>
+          <center>© 2016-2023 Developer OwlDev. All rights reserved.</center>
         </Typography>
       </footer>
     </>

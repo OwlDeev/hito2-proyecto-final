@@ -6,8 +6,8 @@ import "../css/evaluaciones.css";
 
 function Evaluaciones() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container>
+    <Box className='boxMain'>
+      <Grid className='gridGallery'>
         <Grid xs={12}>
           <Box className="divGaleriaEncuestas">
             <GallerySlide></GallerySlide>
