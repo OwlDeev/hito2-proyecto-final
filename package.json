@@ -35,8 +35,6 @@
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:front": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
