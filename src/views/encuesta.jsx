@@ -39,8 +39,8 @@ function Encuesta() {
     try {
       await axios.post(urlServer + endpoint, respuestaEnc);
       handleClickOpenDialog()
-    } catch ({ response: { data: message } }) {
-      console.log(response.data.message)
+    } catch (error) {
+      console.log(error)
     }
   };
 
