@@ -91,7 +91,7 @@ function Encuesta() {
   const navigate = useNavigate();
   const { usuarioCompleto, esDNC, encuestaElegida } = useContext(Context);
   const [setIdEncuesta] = useState(0);
-  const [survey, setSurvey] = useState(new Model)
+  const [survey, setSurvey] = useState(new Model())
   const [openDialogActualizar, setOpenDiagolActualizar] = useState(false);
   
 

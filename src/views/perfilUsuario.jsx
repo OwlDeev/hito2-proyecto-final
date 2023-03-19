@@ -62,7 +62,6 @@ function PerfilUsuario() {
   const [passwordPerfil, setPasswordPerfil] = useState("");
   const [imagenPerfil, setImagenPerfil] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [age, setAge] = useState("");
   const [openDialogActualizar, setOpenDiagolActualizar] = useState(false);
   const [openDialogFoto, setOpenDiagolFoto] = useState(false);
 
@@ -113,7 +112,7 @@ function PerfilUsuario() {
 
   function unCaracterFecha(a) {
     let agregaCero = a.toString();
-    if (agregaCero.length == 1) {
+    if (agregaCero.length === 1) {
       agregaCero = "0" + agregaCero;
     }
     return agregaCero;
@@ -143,10 +142,6 @@ function PerfilUsuario() {
 
   const handleChangePassword = (event) => {
     setPasswordPerfil(event.target.value);
-  };
-
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
   };
 
   let enableEditNombre = () => {

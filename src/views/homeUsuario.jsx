@@ -22,7 +22,7 @@ function HomeUsuario() {
 
   useEffect(() => {
     for(let encuesta of usuarioEncuesta){
-      if (encuesta.id_encuesta == 1 && encuesta.realizada == 1) {
+      if (encuesta.id_encuesta === 1 && encuesta.realizada === 1) {
         setEncuestaDncRealizada(true);
       }
     }

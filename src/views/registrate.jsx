@@ -54,7 +54,7 @@ function Registrate() {
   function traeIdArea() {
     let idArea='';
     for (let area of allAreas) {
-      if (area.label == areaRegistro) {
+      if (area.label === areaRegistro) {
         idArea = area.id;
       }
     }
@@ -80,9 +80,9 @@ function Registrate() {
         );
         setMensajeError(consultaRegistro.data);
         if (
-          consultaRegistro.data ==
+          consultaRegistro.data ===
             "El Email ya se encuentra registrado, utilice otro por favor" ||
-          consultaRegistro.data == "Deben estar todos los campos ingresados"
+          consultaRegistro.data === "Deben estar todos los campos ingresados"
         ) {
           setOpen(true);
         } else {

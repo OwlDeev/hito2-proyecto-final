@@ -25,7 +25,9 @@ function Home() {
         formatoArea.push(newArea)
       }
       setAllAreas(formatoArea)
-    } catch ({ response: { data: message } }) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
   return (
     <div className="backgroundHome">

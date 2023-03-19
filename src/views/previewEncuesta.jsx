@@ -9,11 +9,11 @@ function PreviewEncuesta() {
 
   function nombreEncuesta(){
     let titulo
-    if(esDNC == 1){
+    if(esDNC === 1){
       titulo = 'DNC'
     }else{
       for(let encuestaId of encuestas){
-        if(encuestaId.id == encuestaElegida){
+        if(encuestaId.id === encuestaElegida){
           titulo=encuestaId.titulo
         }
       }

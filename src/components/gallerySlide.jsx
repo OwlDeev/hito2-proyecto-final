@@ -11,13 +11,14 @@ import axios from "axios";
 import "swiper/css";
 import "swiper/css/virtual";
 
-export default () => {
+export default function GallerySlide(){
+  
   useEffect(() => {
     obtenerEvaluaciones();
   }, []);
 
   const { encuestas, usuarioEncuesta, setEncuestas } = useContext(Context);
-
+ 
   const obtenerEvaluaciones = async () => {
     const urlServer = "http://localhost:4000";
     const endpoint = "/evaluaciones";
@@ -27,14 +28,15 @@ export default () => {
     try {
       let resultado = await axios.post(urlServer + endpoint, usuario);
       setEncuestas(resultado.data);
-    } catch ({ response: { data: message } }) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
-
 
   return (
     <Swiper modules={[Virtual]} spaceBetween={20} slidesPerView={2} virtual>
       {encuestas.map((encuesta, index) =>
-        encuesta.titulo == "DNC" ? (
+        encuesta.titulo === "DNC" ? (
           <div></div>
         ) : (
           <SwiperSlide key={encuesta.id_encuesta} virtualIndex={index}>
