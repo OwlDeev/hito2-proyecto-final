@@ -8,7 +8,7 @@ import PreviewEncuesta from './views/previewEncuesta'
 import Encuesta from './views/encuesta'
 import Evaluaciones from './views/evaluaciones'
 import { Provider } from './Context'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppBar from "./components/appBar";
 import Footer from "./components/footer"
 

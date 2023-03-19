@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useContext } from "react";
 import { Context } from "../Context";
 import CardEncuesta from "./CardEncuesta";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 // Import Swiper styles

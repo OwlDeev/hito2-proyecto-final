@@ -1,7 +1,7 @@
 import "../css/previewEncuesta.css";
 import { Container, Box, Button, Typography, Grid } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../Context";
 
 function PreviewEncuesta() {
