@@ -1,7 +1,7 @@
 import "../css/login.css";
 import logo from "../img/logo.png";
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Context } from "../Context";
 
@@ -18,8 +18,12 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 
+useEffect(()=>{
+  setUsuarioEncuesta([])
+},[])
+
 function Login() {
-  const { setUsuario } = useContext(Context);
+  const { setUsuario,setUsuarioEncuesta } = useContext(Context);
   const navigate = useNavigate();
   const [usuario, setUsuarioLocal] = useState({});
   const [open, setOpen] = useState(false);
