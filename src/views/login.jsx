@@ -18,11 +18,12 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 
-useEffect(()=>{
-  setUsuarioEncuesta([])
-},[])
-
 function Login() {
+
+  useEffect(()=>{
+    setUsuarioEncuesta([])
+  },[])
+
   const { setUsuario,setUsuarioEncuesta } = useContext(Context);
   const navigate = useNavigate();
   const [usuario, setUsuarioLocal] = useState({});
