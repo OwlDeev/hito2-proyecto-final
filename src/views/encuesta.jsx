@@ -31,7 +31,26 @@ function Encuesta() {
     }
     let surveyJson = {}
     switch (encuestaElegida) {
-      case 1:
+      case 0:
+        surveyJson = {
+          elements: [
+            {
+              name: "actitud",
+              title: "Cual es su tu actitud en el campo laboral:",
+              type: "rating",
+              isRequired: true
+            },
+            {
+              name: "motivación",
+              title: "Cual es su tu motivación en el campo laboral:",
+              type: "rating",
+              isRequired: true
+            },
+          ],
+        };
+        break;
+
+        case 1:
         surveyJson = {
           elements: [
             {
@@ -107,11 +126,22 @@ function Encuesta() {
   };
 
   const onComplete = (survey, options) => {
-    const valores = {
-      idUsuario: usuarioCompleto[0].id,
-      idEncuesta: encuestaElegida,
-      respuesta: survey.data,
-    };
+    let encuestaDNC = 0
+    const valores = {}
+    if(encuestaElegida = 0){
+      encuestaDNC=1
+      valores = {
+        idUsuario: usuarioCompleto[0].id,
+        idEncuesta: encuestaDNC,
+        respuesta: survey.data,
+      }
+    }else{
+      valores = {
+        idUsuario: usuarioCompleto[0].id,
+        idEncuesta: encuestaElegida,
+        respuesta: survey.data,
+      }
+    }
     registrarDatos(valores)
   };
 
