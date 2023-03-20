@@ -19,12 +19,12 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 
 function Login() {
+  useEffect(() => {
+    setUsuarioEncuesta([]);
+  }, []);
 
-  useEffect(()=>{
-    setUsuarioEncuesta([])
-  },[])
-
-  const { setUsuario,setUsuarioEncuesta } = useContext(Context);
+  const { setUsuario, setUsuarioEncuesta, setUsuarioPerfil } =
+    useContext(Context);
   const navigate = useNavigate();
   const [usuario, setUsuarioLocal] = useState({});
   const [open, setOpen] = useState(false);
@@ -40,11 +40,14 @@ function Login() {
         setOpen(true);
       } else {
         const { data: token } = await axios.post(urlServer + endpoint, usuario);
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", token[0]);
+        setUsuarioPerfil(token[1]);
         setUsuario(usuario.email);
-        navigate("/homeUsuario");
+        token[1] === 1
+          ? navigate("/homeAdmin")
+          : navigate("/homeUsuario")
       }
-    } catch ({ response: { data: message } }) {
+    } catch (error) {
       setStringError("Ocurrio un error al intentar logear");
       setOpen(true);
     }

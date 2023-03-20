@@ -9,6 +9,7 @@ export const Provider = ({ children }) => {
   const [encuestas, setEncuestas] = useState([]);
   const [encuestaElegida, setEncuestaElegida] = useState(0)
   const [usuario, setUsuario] = useState([]);
+  const [usuarioPerfil, setUsuarioPerfil] = useState([]);
   const [allAreas, setAllAreas] = useState([]);
   const [usuarioCompleto, setUsuarioCompleto] = useState([
     { area: "", email: "", id: "", imagen: "", nombre: "", password: "" },
@@ -32,6 +33,8 @@ export const Provider = ({ children }) => {
     esDNC,
     setEncuestaElegida,
     encuestaElegida,
+    setUsuarioPerfil,
+    usuarioPerfil
   };
 
   return <Context.Provider value={globalState}>{children}</Context.Provider>;

@@ -20,14 +20,6 @@ function HomeUsuario() {
     buscarUsuario();
   }, []);
 
-  // useEffect(() => {
-  //   for(let encuesta of usuarioEncuesta){
-  //     if (encuesta.id_encuesta === 1 && encuesta.realizada === 1) {
-  //       setEncuestaDncRealizada(true);
-  //     }
-  //   }
-  // }, [usuarioEncuesta]);
-
   const buscarUsuario = async () => {
     const urlServer = "http://localhost:4000";
     const endpoint = "/homeUsuario";

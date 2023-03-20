@@ -7,6 +7,8 @@ import PerfilUsuario from './views/perfilUsuario'
 import PreviewEncuesta from './views/previewEncuesta'
 import Encuesta from './views/encuesta'
 import Evaluaciones from './views/evaluaciones'
+import HomeAdmin from './views/homeAdmin'
+import CrearEncuesta from './views/crearEncuesta'
 import { Provider } from './Context'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppBar from "./components/appBar";
@@ -31,6 +33,8 @@ function App() {
             <Route path="/previewEncuesta"element={<PreviewEncuesta/>}/>
             <Route path="/Encuesta"element={<Encuesta/>}/>
             <Route path="/Evaluaciones"element={<Evaluaciones/>}/>
+            <Route path="/homeAdmin"element={<HomeAdmin/>}/>
+            <Route path="/crearEncuesta"element={<CrearEncuesta/>}/>
           </Routes>
         </BrowserRouter>
       </Provider>
