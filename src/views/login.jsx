@@ -1,5 +1,6 @@
 import "../css/login.css";
 import logo from "../img/logo.png";
+import logo2 from "../img/logo2.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
@@ -67,7 +68,7 @@ function Login() {
 
   return (
     <Container fixed className="backgroundLogin">
-      <img src={logo} className="appLogo" alt="logo" />
+      <img src={logo2} className="appLogo" alt="logo" />
       <Divider variant="middle" className="divider" />
       <Box className="divLogin">
         <Typography variant="h4" gutterBottom className="labelTitulo1">

@@ -3,7 +3,7 @@
     margin: 30px;
 }
 
-.boxMain{
+.boxMainEvaluaciones{
     width: 100%;
     height: 95vh;
     display: flex;
@@ -11,6 +11,6 @@
     align-items: center;
 }
 
-.gridGallery{
-
+.labelTitulo{
+    margin-top: 0 !important;
 }

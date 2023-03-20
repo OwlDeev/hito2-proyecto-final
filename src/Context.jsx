@@ -3,8 +3,6 @@ import { useState, createContext } from "react";
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
-  //UseEffect
-
   //UseState
   const [encuestas, setEncuestas] = useState([]);
   const [encuestaElegida, setEncuestaElegida] = useState(0)

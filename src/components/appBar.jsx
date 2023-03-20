@@ -73,7 +73,7 @@ function ResponsiveAppBar() {
     ? [
         { label: "Iniciar Sesion", url: "/Login" },
         { label: "Registrate", url: "/Registrate" },
-        { label: "Home Usuario", url: "/homeUsuario" },
+        { label: "Encuestas", url: "/homeUsuario" },
         { label: " - ", url: "/homeUsuario" },
       ]
     : [

@@ -1,3 +1,8 @@
 .menuItem{
     display: flex !important;
 }
+
+a{
+    text-decoration: none;
+  }
+  

@@ -1,5 +1,6 @@
 import "../css/registrate.css";
 import logo from "../img/logo.png";
+import logo2 from "../img/logo2.png";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -52,7 +53,7 @@ function Registrate() {
   };
 
   function traeIdArea() {
-    let idArea='';
+    let idArea = "";
     for (let area of allAreas) {
       if (area.label === areaRegistro) {
         idArea = area.id;
@@ -121,91 +122,106 @@ function Registrate() {
 
   return (
     <Container fixed className="backgroundRegistrate">
-      <img src={logo} className="appLogo" alt="logo" />
-      <Divider variant="middle" className="divider" />
-      <Box className="divRegistrate">
-        <Typography variant="h4" gutterBottom className="labelTitulo1">
-          Regístrate
-        </Typography>
-        <Collapse in={open}>
-          <Alert
-            severity="warning"
-            action={
-              <IconButton
-                aria-label="close"
-                color="warning"
-                size="small"
-                onClick={() => {
-                  setOpen(false);
-                }}
+      <Box className="boxRegistrate">
+        <Box className="boxRegistrate2">
+          <img
+            className="imgRegistrate"
+            src="https://img.freepik.com/free-vector/tiny-people-beautiful-flower-garden-inside-female-head-isolated-flat-illustration_74855-11098.jpg?w=900&t=st=1679301793~exp=1679302393~hmac=bc20faf608dc735ba0f9840c389538f891297208188f60d37bcc206f6faa74dd"
+          ></img>
+        </Box>
+        <Box className="boxRegistrate22">
+          <Divider variant="middle" className="divider" />
+          <Box className="divRegistrate">
+            <Typography variant="h4" gutterBottom className="labelTitulo1">
+              Regístrate
+            </Typography>
+            <Collapse in={open}>
+              <Alert
+                severity="warning"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="warning"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
               >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
-            sx={{ mb: 2 }}
-          >
-            {mensajeError}
-          </Alert>
-        </Collapse>
-        <TextField
-          id="outlined-basic"
-          label="Nombre"
-          variant="outlined"
-          className="botonInicioSesion"
-          value={nombreRegistro}
-          onChange={handleChangeNombre}
-          name="nombre"
-        />
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          className="botonInicioSesion"
-          value={passwordRegistro}
-          onChange={handleChangePassword}
-          name="password"
-        />
-        <TextField
-          id="outlined-basic"
-          label="Correo Electronico"
-          variant="outlined"
-          className="botonInicioSesion"
-          value={emailRegistro}
-          onChange={handleChangeEmail}
-          name="email"
-          error={isValidEmail}
-          helperText="Formato correcto"
-          onBlur={validarEmail}
-        />
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={allAreas}
-          sx={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Area de empleo" />
-          )}
-          // value={areaRegistro}
-          onChange={handleChangeArea}
-          name="area"
-          clearIcon={null}
-        />
-      </Box>
-      <Box className="divBotones">
-        <Button
-          variant="contained"
-          className="botonRegistrarse"
-          onClick={onClickVolver}
-        >
-          Volver
-        </Button>
-        <Button
-          variant="contained"
-          className="botonRegistrarse"
-          onClick={registrarUsuario}
-        >
-          Registrate
-        </Button>
+                {mensajeError}
+              </Alert>
+            </Collapse>
+            <TextField
+              id="outlined-basic"
+              label="Nombre"
+              variant="outlined"
+              className="botonInicioSesion"
+              value={nombreRegistro}
+              onChange={handleChangeNombre}
+              name="nombre"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              className="botonInicioSesion"
+              value={passwordRegistro}
+              onChange={handleChangePassword}
+              name="password"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Correo Electronico"
+              variant="outlined"
+              className="botonInicioSesion"
+              value={emailRegistro}
+              onChange={handleChangeEmail}
+              name="email"
+              error={isValidEmail}
+              helperText="Formato correcto"
+              onBlur={validarEmail}
+            />
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={allAreas}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Area de empleo" />
+              )}
+              // value={areaRegistro}
+              onChange={handleChangeArea}
+              name="area"
+              clearIcon={null}
+            />
+          </Box>
+          <Box className="divBotones">
+            <Button
+              variant="contained"
+              className="botonRegistrarse"
+              onClick={onClickVolver}
+            >
+              Volver
+            </Button>
+            <Button
+              variant="contained"
+              className="botonRegistrarse"
+              onClick={registrarUsuario}
+            >
+              Registrate
+            </Button>
+          </Box>
+        </Box>
+        <Box className="boxRegistrate2">
+          <img
+            className="imgRegistrate"
+            src="https://img.freepik.com/free-vector/boy-mental-health-with-flowers_603843-975.jpg?w=740&t=st=1679301773~exp=1679302373~hmac=a3704a48be61a9533b535edb601b229c68979e2a8f88f2a80698fa96c12528b0"
+          ></img>
+        </Box>
       </Box>
 
       <Dialog

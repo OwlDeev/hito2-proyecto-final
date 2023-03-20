@@ -42,7 +42,7 @@ function PerfilUsuario() {
     setNacionalidadPerfil(usuarioCompleto[0].nacionalidad);
     setFechaPerfil(usuarioCompleto[0].fecha);
     setGeneroPerfil(usuarioCompleto[0].genero);
-    setImagenPerfil(usuarioCompleto[0].imagen)
+    setImagenPerfil(usuarioCompleto[0].imagen);
   }, []);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ function PerfilUsuario() {
 
   const handleCloseFoto = () => {
     setOpenDiagolFoto(false);
-    console.log(imagenPerfil)
+    console.log(imagenPerfil);
   };
 
   const handleMouseDownPassword = (event) => {
@@ -244,10 +244,27 @@ function PerfilUsuario() {
   };
 
   return (
-    <Box>
-      <Typography variant="h4" gutterBottom className="labelTitulo">
-        Perfil
-      </Typography>
+    <Box className="boxMainPerfil">
+      <Box className="boxTituloPerfil">
+        <Box className="boxTituloPerfils">
+          <img
+            className="imgTituloPerfils"
+            src="https://sodimac.scene7.com/is/image/SodimacCL/6661211_01?wid=1500&hei=1500&qlt=70"
+          ></img>
+        </Box>
+        <Box className="boxTituloPerfils">
+          <Typography variant="h4" gutterBottom className="labelTitulo">
+            PERFIL
+          </Typography>
+        </Box>
+        <Box className="boxTituloPerfils">
+          <img
+            className="imgTituloPerfils"
+            src="https://img.freepik.com/vector-premium/caracter-arandano-como-fotografo_152558-6506.jpg?w=740"
+          ></img>
+        </Box>
+      </Box>
+
       <Grid container spacing={2} columns={16}>
         <Grid item xs={8}>
           <Box className="nombreUsuarioEditar">
@@ -475,7 +492,9 @@ function PerfilUsuario() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Cambio de imagen de perfil"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {"Cambio de imagen de perfil"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <TextField

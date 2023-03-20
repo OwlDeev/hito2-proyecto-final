@@ -1,8 +1,24 @@
-.background{
+.backgroundAdmin{
     background-color: rgb(255, 255, 255);
-    width: 100vw;
-    height: 90vh;
+    width: 100vw !important;
+    height: 90vh !important;
+}
+
+.divMain{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+}
+
+.divEvaluaciones{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
 }
